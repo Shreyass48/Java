@@ -8,59 +8,79 @@
 
   import java.util.*;
 
-  class ArrayDemo
+  class ArrayX
   {
-  	public int Difference(int Arr[])
-  	{
-  		int i = 0, iEsum = 0, iOsum = 0, iDiff = 0;
-  	    for(i = 0; i < Arr.length; i++)
-        {
-            if((Arr[i] % 2) == 0)
-            {
-              iEsum = iEsum + Arr[i];
-            }
-            else
-            {
-              iOsum = iOsum + Arr[i];
-            }
-        }
+    public int Arr[];
 
-        iDiff = iEsum - iOsum;
+    public ArrayX(int iSize)
+    {
+      Arr = new int[iSize];
+    }
 
-        if(iDiff < 0)
-        {
-          iDiff = -iDiff;
-        }
-        return iDiff;
-  	}
+    public void Accept()
+    {
+      int i = 0;
+      Scanner sobj = new Scanner(System.in);
+      System.out.println("Entere elements :");
+      for(i = 0; i < Arr.length; i++)
+      {
+          Arr[i] = sobj.nextInt();
+      }
+    }
+
+    public void Display()
+    {
+      int i = 0;
+      System.out.println("Entered elements are:");
+      for(i = 0; i < Arr.length; i++)
+      {
+          System.out.println(Arr[i]);
+      }
+      
+    }
+  }
+
+  class ArrayDemo extends ArrayX
+  {
+  	public ArrayDemo(int iNo)
+    {
+      super(iNo);
+    }
+    public int CountDiff()
+    {
+       int i = 0, iEsum = 0, iOsum = 0, iDiff = 0;
+       for(i = 0; i < Arr.length; i++)
+       {
+          if(Arr[i] % 2 == 0)
+          {
+            iEsum = iEsum + Arr[i];
+          }
+          else
+          {
+            iOsum = iOsum + Arr[i]; 
+          }
+       }
+       iDiff = iEsum - iOsum;
+       return iDiff;
+    }
   }
 
   class Assignment32A
   {
   	public static void main(String arg[])
   	{
-  		Scanner sobj = new Scanner(System.in);
-  		int iNo = 0, i = 0;
-  		int [] brr = new int[20];
-  		int iRet = 0;
+      Scanner sobj = new Scanner(System.in);
+      int iValue = 0, iRet = 0;
 
-  		System.out.println("Enter number of elements:");
-  		iNo = sobj.nextInt();
+      System.out.println("Enter number of elements:");
+      iValue = sobj.nextInt();
 
+      ArrayDemo aobj = new ArrayDemo(iValue);
+      aobj.Accept();
+      //aobj.Display();
+      iRet = aobj.CountDiff();
+      System.out.println("Difference is : "+iRet);
 
-  		for(i = 0; i < iNo; i++)
-  		{
-  			System.out.println("Enter element:");
-  			brr[i] = sobj.nextInt();
-  		}
-
-      ArrayDemo obj = new ArrayDemo();
-  		iRet = obj.Difference(brr);
-
-  		System.out.println("Difference is:"+iRet);
-
-
-
-
+  		
   	}
   }

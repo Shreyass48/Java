@@ -7,47 +7,58 @@
 
 import java.util.*;
 
-class StringDemo
+class StringX
+{
+	public String str;
+
+	public void Accept()
+	{
+		Scanner sobj = new Scanner(System.in);
+
+		System.out.println("Enter String:");
+		str = sobj.nextLine();
+  }
+
+  public void Display()
+  {
+  	System.out.println("Entered String is: "+str);
+  }
+}
+
+
+class StringDemo extends StringX
 {
 	
-	 public int CountSmall(String str)
-	 {
-	 	 int i = 0;
-	 	 int iCnt = 0;
-
-	 	 for(i = 0; i < str.length(); i++)
-	 	 { 
-	 	 		if((str.charAt(i) >= 'a') && (str.charAt(i) <= 'z'))
-	 	 		{
-	 	 			 iCnt++;
-	 	 		}
-	 	 	
-
-	 	 }
-	 	 return iCnt;
-	 }
-	
+	public int CountSmall()
+	{
+		char Arr[] = str.toCharArray();
+		int i = 0, iCnt = 0;
+		for(i = 0; i < Arr.length; i++)
+		{
+			if((Arr[i] <= 'z') && (Arr[i] >= 'a'))
+			{
+				iCnt++;
+			}
+		}
+		return iCnt;
+	}
 }
 
 class Assignment31B
 {
-	public static void main(String arg[])
+	public static void main(String arg [])
 	{
-	  Scanner sobj = new Scanner(System.in);
 
-	  String s;
-	  int iRet = 0;
+		int iRet = 0;
 
-	  System.out.println("Enter String:");
-	  s = sobj.nextLine();
-
-	  StringDemo obj = new StringDemo();
-	  iRet = obj.CountSmall(s);
+		StringDemo obj = new StringDemo();
+		obj.Accept();
+		obj.Display();
+		iRet = obj.CountSmall();
+		System.out.println("Count of small capital latters are : "+iRet);
 
 
-	  System.out.println("Count of small latters are :"+iRet);
 
-
-  }
+	}
 }
 

@@ -8,54 +8,64 @@
 
 import java.util.*;
 
-class StringDemo
+class StringX
 {
-		public int CountDiff(String str)
-		{
-			 int i = 0;
-			 int iCapCnt = 0, iSmlCnt = 0, iDiff = 0;
+	public String str;
 
-			 for(i = 0; i < str.length(); i++)
-			 {
-			 		if((str.charAt(i) >= 'A') && (str.charAt(i) >= 'Z'))
-			 		{
-			 			iCapCnt++;
-			 		}
-			 		else
-			 		{
-			 			iSmlCnt++;
-			 		}
-			 }
+	public void Accept()
+	{
+		Scanner sobj = new Scanner(System.in);
 
-			 iDiff = iSmlCnt - iCapCnt;
+		System.out.println("Enter String:");
+		str = sobj.nextLine();
+  }
 
-			 if(iDiff < 0)
-			 {
-			 	iDiff = -iDiff;
-			 }
-			 
-			 return iDiff;
-		}
+  public void Display()
+  {
+  	System.out.println("Entered String is: "+str);
+  }
+}
+
+
+class StringDemo extends StringX
+{
 	
+	public int CountDiff()
+	{
+		char Arr[] = str.toCharArray();
+		int i = 0, iCapCnt = 0, iSmlCnt = 0, iDiff = 0;
+		for(i = 0; i < Arr.length; i++)
+		{
+			if((Arr[i] <= 'Z') && (Arr[i] >= 'A'))
+			{
+				iCapCnt++;
+			}
+			else if((Arr[i] <= 'z') && (Arr[i] >= 'a'))
+			{
+				iSmlCnt++;
+			}
+		}
+		iDiff = iSmlCnt - iCapCnt;
+		return iDiff;
+	}
 }
 
 class Assignment31C
 {
-	public static void main(String arg[])
+	public static void main(String arg [])
 	{
-		Scanner sobj = new Scanner(System.in);
 
-		String s;
 		int iRet = 0;
 
-		System.out.println("Enter String:");
-		s = sobj.nextLine();
-
 		StringDemo obj = new StringDemo();
-		iRet = obj.CountDiff(s);
+		obj.Accept();
+		obj.Display();
 
-		System.out.println("Difference is:"+iRet);
+		iRet = obj.CountDiff();
+		System.out.println("Difference is : "+iRet);
+
+
+
 	}
- 
 }
 

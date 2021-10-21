@@ -7,29 +7,44 @@
 
 import java.util.*;
 
-class StringDemo
+class StringX
 {
-	public boolean ChkVowel(String str)
+	public String str;
+
+	public void Accept()
 	{
-		int i = 0;
-		boolean bFlag = false;
+		Scanner sobj = new Scanner(System.in);
 
-		for(i = 0; i < str.length(); i++)
-		{
-			if((str.charAt(i) == 'a') || (str.charAt(i) == 'e') || (str.charAt(i) == 'i') || (str.charAt(i) == 'o') || (str.charAt(i) == 'u') ||
-				(str.charAt(i) == 'A') || (str.charAt(i) == 'E') || (str.charAt(i) == 'I') || (str.charAt(i) == 'O') || (str.charAt(i) == 'U'))
+		System.out.println("Enter String: ");
+		str = sobj.nextLine();
+	}
+
+	public void Display()
+	{
+		System.out.println("Entered String: "+str);
+	}
+}
+
+class StringDemo extends StringX
+{
+	public boolean ChkVowel()
+	{
+			char Arr[] = str.toCharArray();
+			int i = 0;
+			boolean bFlag = false;
+			for(i = 0; i  < Arr.length; i++)
 			{
-				bFlag = true;
-				break;
+					if((Arr[i] == 'A') || (Arr[i] == 'E') || (Arr[i] == 'I') || (Arr[i] == 'O') || (Arr[i] == 'U') ||
+						(Arr[i] == 'a') || (Arr[i] == 'e') || (Arr[i] == 'i') || (Arr[i] == 'o') || (Arr[i] == 'u'))
+					{
+						bFlag = true;
+						break;
+					}
 			}
-
-		}
-			
-				return bFlag;
-
-		}
+			return bFlag;
 
 	}
+}
 	
 
 
@@ -37,16 +52,13 @@ class Assignment31D
 {
 	public static void main(String arg[])
 	{
-		Scanner sobj = new Scanner(System.in);
-
-		String s;
+		
 		boolean bRet = false;
 
-		System.out.println("Enter String:");
-		s = sobj.nextLine();
-
 		StringDemo obj = new StringDemo();
-		bRet = obj.ChkVowel(s);
+		obj.Accept();
+		obj.Display();
+		bRet = obj.ChkVowel();
 
 		if(bRet == true)
 		{

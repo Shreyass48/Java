@@ -7,20 +7,39 @@
 
 import java.util.*;
 
-class StringDemo
+class StringX
+{
+	public String str;
+
+	public void Accept()
+	{
+		Scanner sobj = new Scanner(System.in);
+
+		System.out.println("Enter String:");
+		str = sobj.nextLine();
+  }
+
+  public void Display()
+  {
+  	System.out.println("Entered String is: "+str);
+  }
+}
+
+
+class StringDemo extends StringX
 {
 	
-	public int CountCapital(String str)
+	public int CountCapital()
 	{
-		int iCnt = 0;
-		int i = 0;
-		for(i = 0; i < str.length(); i++)
+		char Arr[] = str.toCharArray();
+		int i = 0, iCnt = 0;
+		for(i = 0; i < Arr.length; i++)
 		{
-		  if((str.charAt(i) <= 'Z') && (str.charAt(i) >= 'A'))
-		  {
-			  iCnt++;
-		  }
-	  }
+			if((Arr[i] <= 'Z') && (Arr[i] >= 'A'))
+			{
+				iCnt++;
+			}
+		}
 		return iCnt;
 	}
 }
@@ -30,18 +49,16 @@ class Assignment31A
 	public static void main(String arg [])
 	{
 
-		Scanner sobj = new Scanner(System.in);
-		
-		String s;
 		int iRet = 0;
 
-		System.out.println("Enter String:");
-		s = sobj.nextLine();
-
 		StringDemo obj = new StringDemo();
-		iRet = obj.CountCapital(s);
+		obj.Accept();
+		obj.Display();
 
+		iRet = obj.CountCapital();
 		System.out.println("Count of capital capital latters are : "+iRet);
+
+
 
 	}
 }

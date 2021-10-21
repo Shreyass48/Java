@@ -7,18 +7,57 @@
 
 import java.util.*;
 
-class ArrayDemo
+class ArrayX
 {
-  public void Display(int Arr[])
+  public int Arr[];
+
+  public ArrayX(int iSize)
+  {
+    Arr = new int[iSize];
+  }
+
+  public void Accept()
+  {
+    int i = 0;
+    System.out.println("Enter elements :");
+    Scanner sobj = new Scanner(System.in);
+    for(i = 0; i < Arr.length; i++)
+    {
+        Arr[i] = sobj.nextInt();
+    }
+
+  }
+
+  public void Display()
+  {
+    int i = 0;
+    System.out.println("Entered elements are :");
+    for(i = 0; i < Arr.length; i++)
+    {
+       System.out.println(Arr[i]);
+    }
+
+  }
+}
+
+class ArrayDemo extends ArrayX
+{
+  public ArrayDemo(int iVal)
+  {
+    super(iVal);
+  }
+
+  public void Divisible()
   {
     int i = 0;
     for(i = 0; i < Arr.length; i++)
     {
-      if(Arr[i] % 5 == 0)
-      {
-        System.out.println(Arr[i]);
-      }
+        if(Arr[i] % 5 == 0)
+        {
+          System.out.println(Arr[i]);
+        }
     }
+
   }
 }
 
@@ -28,23 +67,15 @@ class Assignment32B
   {
     Scanner sobj = new Scanner(System.in);
 
-    int iNo = 0, i = 0;
+    int iNo = 0;
 
     System.out.println("Enter number of elements:");
     iNo = sobj.nextInt();
 
-    int [] brr = new int[iNo];
-
-    for(i = 0; i < iNo; i++)
-    {
-      brr[i] = sobj.nextInt();
-    }
- 
-    System.out.println("Divisible by 5 elements:");
-
-    ArrayDemo obj = new ArrayDemo();
-    obj.Display(brr);
-
+    ArrayDemo aobj = new ArrayDemo(iNo);
+    aobj.Accept();
+    System.out.println("Elements which are divisible by 5 : ");
+    aobj.Divisible();
 
   }
 }

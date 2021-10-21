@@ -7,16 +7,44 @@
 
 import java.util.*;
 
-class StringDemo
+class StringX
 {
-	public void Reverse(String str)
+	public String str;
+
+	public void Accept()
 	{
-		
-		int i = 0;
-		for(i = str.length()-1; i >= 0; i--)
-		{
-			System.out.print(str.charAt(i));
-		}
+		Scanner sobj = new Scanner(System.in);
+
+		System.out.println("Enter String: ");
+		str = sobj.nextLine();
+	}
+
+	public void Display()
+	{
+		System.out.println("Entered String: "+str);
+	}
+}
+
+class StringDemo extends StringX
+{
+	public String ReverseX()
+	{
+			char Arr[] = str.toCharArray();
+			int i = 0, iStart = 0, iEnd = Arr.length - 1;
+			char cTemp;
+
+			while(iStart < iEnd)
+			{
+				cTemp = Arr[iStart];
+				Arr[iStart] = Arr[iEnd];
+				Arr[iEnd] = cTemp;
+
+				iStart++;
+				iEnd--;
+			}
+
+			return new String(Arr);
+			
 
 	}
 }
@@ -27,19 +55,15 @@ class Assignment31E
 {
 	public static void main(String arg[])
 	{
-		Scanner sobj = new Scanner(System.in);
-
+		
 		String s;
 
-		System.out.println("Enter String:");
-		s = sobj.nextLine();
-
 		StringDemo obj = new StringDemo();
-		obj.Reverse(s);
+		obj.Accept();
+		obj.Display();
+		s = obj.ReverseX();
+		System.out.println("Reverse is:"+s);
 
-		System.out.println();
-
-		}
+	}
  
 }
-
